@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import API_URL from "../api";
 
 function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -37,7 +38,7 @@ function AdminProducts() {
       return imageUrl;
     }
 
-    return `http://localhost:5000${imageUrl}`;
+    return `${API_URL}${imageUrl}`;;
   };
 
   // ========================================
@@ -50,7 +51,7 @@ function AdminProducts() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/products",
+        `${API_URL}/api/admin/products`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -164,8 +165,8 @@ function AdminProducts() {
       setImagePreview(product.image_url);
     } else {
       setImagePreview(
-        `http://localhost:5000${product.image_url}`
-      );
+  `${API_URL}${product.image_url}`
+);
     }
   } else {
     setImagePreview("");
@@ -216,7 +217,7 @@ const handleSubmit = async (event) => {
       );
 
       const imageResponse = await fetch(
-        "http://localhost:5000/api/admin/products/upload-image",
+        `${API_URL}/api/admin/products/upload-image`,
         {
           method: "POST",
           headers: {
@@ -288,8 +289,8 @@ const handleSubmit = async (event) => {
       Boolean(editingProduct);
 
     const url = isEditing
-      ? `http://localhost:5000/api/admin/products/${editingProduct.id}`
-      : "http://localhost:5000/api/admin/products";
+  ? `${API_URL}/api/admin/products/${editingProduct.id}`
+  : `${API_URL}/api/admin/products`;
 
     const method = isEditing
       ? "PUT"
@@ -412,7 +413,7 @@ const handleSubmit = async (event) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/products/${id}`,
+        `${API_URL}/api/admin/products/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -452,7 +453,7 @@ const handleSubmit = async (event) => {
   const handleToggleStatus = async (product) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/products/${product.id}/status`,
+        `${API_URL}/api/admin/products/${product.id}/status`,
         {
           method: "PATCH",
 

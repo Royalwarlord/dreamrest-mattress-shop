@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import API_URL from "../api";
 
 function Products() {
   const { addToCart } = useCart();
@@ -28,7 +29,7 @@ function Products() {
       return imageUrl;
     }
 
-    return `http://localhost:5000${imageUrl}`;
+    return `${API_URL}${imageUrl}`;
   };
 
   // ========================================
@@ -45,8 +46,8 @@ function Products() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/products"
-      );
+  `${API_URL}/api/products`
+);
 
       const data = await response.json();
 

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
+import API_URL from "../api";
 
 function Checkout() {
  const { cart, cartTotal, clearCart } = useCart();
@@ -30,7 +31,7 @@ function Checkout() {
   event.preventDefault();
 
   try {
-    const response = await fetch("http://localhost:5000/api/orders", {
+    const response = await fetch(`${API_URL}/api/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

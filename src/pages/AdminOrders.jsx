@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import API_URL from "../api";
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -15,7 +16,7 @@ function AdminOrders() {
 );
 
 const response = await fetch(
-  "http://localhost:5000/api/admin/orders",
+  `${API_URL}/api/admin/orders/${orderId}/status`,
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -47,7 +48,7 @@ const updateOrderStatus = async (orderId, status) => {
     );
 
     const response = await fetch(
-      `http://localhost:5000/api/admin/orders/${orderId}/status`,
+      `${API_URL}/api/admin/orders/${orderId}/status`,
       {
         method: "PUT",
         headers: {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import API_URL from "../api";
 
 function AdminOrderDetails() {
   const { orderId } = useParams();
@@ -29,7 +30,7 @@ function AdminOrderDetails() {
       );
 
       const response = await fetch(
-        `http://localhost:5000/api/orders/${orderId}`,
+        `${API_URL}/api/orders/${orderId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +64,7 @@ function AdminOrderDetails() {
       );
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/orders/${orderId}/status`,
+        `${API_URL}/api/admin/orders/${orderId}/status`,
         {
           method: "PUT",
           headers: {

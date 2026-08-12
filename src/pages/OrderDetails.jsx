@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import API_URL from "../api";
 
 function OrderDetails() {
   const { orderId } = useParams();
@@ -12,8 +13,8 @@ function OrderDetails() {
     const fetchOrder = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/orders/${orderId}`
-        );
+  `${API_URL}/api/orders/${orderId}`
+);
 
         const data = await response.json();
 
