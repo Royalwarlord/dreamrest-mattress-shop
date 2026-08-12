@@ -1772,16 +1772,14 @@ app.post(
 );
 
 // ========================================
-// START SERVER LOCALLY
+// START SERVER
 // ========================================
 
-if (process.env.NODE_ENV !== "production") {
-  app.listen(PORT, () => {
-    console.log(
-      `DreamRest server running on http://localhost:${PORT}`
-    );
-  });
-}
 
-// Export Express app for Vercel
-export default app;
+app.listen(PORT, () => {
+
+  console.log(
+    `DreamRest server running on http://localhost:${PORT}`
+  );
+
+});
